@@ -1,3 +1,5 @@
+[🇨🇳 中文](README.md) | [🇬🇧 English](README_EN.md)
+
 # 🐢 Python_CPUScheduler_Game_Demo
 **CPU Scheduler Demo: FAS vs Generic**
 
