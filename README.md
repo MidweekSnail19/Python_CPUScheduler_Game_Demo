@@ -8,13 +8,13 @@
 
 ## ⚙️ 调度策略
 
-### 🟢 FAS 模式（Frequency-Aware Scheduler）
+### 🟢 FAS 模式（Frametime-Aware Scheduler）
 - 按需逐步提升频率  
 - 有小核/大核的频率上限约束  
 - 过载时切大核，低载时回小核  
 - 追求 **能效平衡**  
 
-### 🔴 Generic 模式（“暴力 Governor”）
+### 🔴 Generic 模式（“Performance Governor”）
 - 一旦有负载就直接拉满频率  
 - 无视能效，只保证性能  
 - 模拟常见的 **Performance Governor**  
@@ -45,7 +45,7 @@
   通过逐步加频、big.LITTLE 切换来平衡性能与能耗。  
 
 - **Generic** 模拟了最传统的 **Performance Governor**：  
-  有活就全力冲，简单但能效差。  
+  简单，low帧高，但能效差。  
 
 ---
 
@@ -55,4 +55,4 @@
 2. 克隆或下载本项目  
 3. 运行：  
    ```bash
-   python fas_demo.py
+   python FAS Turtle Game.py
