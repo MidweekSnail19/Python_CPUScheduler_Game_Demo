@@ -1,7 +1,7 @@
 [🇨🇳 中文](README.md) | [🇬🇧 English](README_EN.md)
 
 # 🐢 Python_CPUScheduler_Game_Demo
-**CPU 调度策略演示：FAS vs Generic**
+**CPU 调度策略演示：FAS vs ondemand**
 
 这是一个用 **Python + turtle** 编写的简易 **CPU 调度策略可视化模拟器**。  
 它并排对比了两种 CPU 调度逻辑：  
@@ -15,10 +15,9 @@
 - 在保证流畅体验的前提下降低功耗  
 - 追求 **性能与能效的平衡**  
 
-### 🔴 Generic 模式（“Performance Governor”）
+### 🔴 ondemand 模式（“ondemand Governor”）
 - 一旦有负载就直接拉满频率  
-- 不考虑能效，只追求性能  
-- 模拟常见的 **Performance Governor** 策略  
+- 模拟常见的 **ondemand Governor** 策略  
 
 ### 🌀 coreAffinity（核心亲和）
 - 根据掉帧情况自动选择游戏线程运行的 CPU 核心  
@@ -52,8 +51,8 @@
 - **FAS** 模拟了现代操作系统中的 **Energy-Aware Scheduling (EAS)** 思想：  
   通过逐步加频、big.LITTLE 切换来平衡性能与能耗。  
 
-- **Generic** 模拟了最传统的 **Performance Governor**：  
-  简单直接，性能优先，但能效较差。  
+- **ondemand** 模拟了最传统的 **ondemand Governor**：  
+  按需快速动态调整CPU频率， 一有cpu计算量的任务，就会立即达到最大频率运行，空闲时间增加就降低频率。  
 
 ---
 
