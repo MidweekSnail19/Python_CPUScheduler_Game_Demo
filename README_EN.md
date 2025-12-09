@@ -1,66 +1,67 @@
 [🇨🇳 中文](README.md) | [🇬🇧 English](README_EN.md)
 
 # 🐢 Python_CPUScheduler_Game_Demo
-**CPU Scheduling Demo: FAS vs Generic**
+**CPU Scheduling Strategy Demo: FAS vs ondemand**
 
-This is a simple **CPU scheduling visualization simulator** written in **Python + turtle**.  
-It compares two CPU scheduling strategies side by side:  
+This is a simple **CPU scheduling visualization simulator** built with **Python + turtle**.  
+It compares two CPU scheduling logics side by side:
 
 ---
 
 ## ⚙️ Scheduling Strategies
 
 ### 🟢 FAS Mode (Frametime-Aware Scheduler)
-- Uses **frametime** as the load indicator to adjust CPU frequency dynamically  
-- Reduces power consumption while maintaining smooth experience  
-- Aims for a balance between **performance and efficiency**  
+- Uses **frametime** as the load indicator to dynamically adjust CPU frequency  
+- Aims to reduce power consumption while keeping the experience smooth  
+- Seeks a **balance between performance and energy efficiency**  
 
-### 🔴 Generic Mode ("Performance Governor")
-- Immediately jumps to maximum frequency once load is detected  
-- Ignores efficiency, only guarantees performance  
-- Simulates the common **Performance Governor** strategy  
+### 🔴 ondemand Mode (“ondemand Governor”)
+- Pushes CPU frequency to the maximum as soon as there is load  
+- Simulates the typical behavior of an **ondemand governor**  
 
-### 🌀 coreAffinity
+### 🌀 coreAffinity (Core Affinity)
 - Automatically chooses which CPU core the game thread runs on based on frame drops  
-- **Little core**: low power, suitable for light workloads  
-- **Big core**: high performance, suitable for heavy workloads  
-- Switches to big core under sustained heavy load; migrates back to little core with delay when load decreases  
-- This ensures burst performance while preserving cache (L1/L2) and reducing jitter  
+- **Little cores**: low power, suitable for light workloads  
+- **Big cores**: high performance, suitable for heavy workloads  
+- Under high load it switches to big cores; when load decreases, it delays migrating back to little cores  
+- This both ensures burst performance and preserves cache (L1/L2), reducing stutter and jitter  
 
 ---
 
 ## ✨ Features
 
-- 🎮 **Interactive workload**  
-  Use `W/A/S/D` to move the turtle 🐢, simulating user input and CPU load  
+- 🎮 **Interactive Load**
+  Use `W/A/S/D` to move the turtle 🐢 and simulate user input load.
 
-- 📊 **Real-time HUD**  
-  - KPS (keys per second), total key presses  
-  - FAS vs Generic: frequency, frametime, FPS  
-  - Power (W), energy per frame (mJ), efficiency (FPS/W)  
-  - Current running core (little/big), overload/underload counters  
+- 📊 **Real-Time HUD**
+  Displays in real time:
+  - KPS and total keypress count  
+  - Frequency, frametime, and FPS for FAS and ondemand  
+  - Power (W), energy per frame (mJ), energy efficiency (FPS/W)  
+  - Current running core (little / big), overload and underload counters  
 
-- ⚡ **Efficiency modeling**  
-  - Little core consumes less power, suited for light load  
-  - Big core consumes more but delivers higher performance  
-  - Shows clear differences between two scheduling strategies  
+- ⚡ **Energy Efficiency Modeling**
+  - Little cores: low power, ideal for light workloads  
+  - Big cores: higher power draw but stronger performance  
+  - Shows how the two scheduling strategies behave differently under the same interactive load  
 
 ---
 
 ## 📖 Background
 
-- **FAS** simulates the concept of **Energy-Aware Scheduling (EAS)** in modern OS kernels:  
-  gradually scaling frequency and switching between big.LITTLE cores to balance performance and energy.  
+- **FAS** is inspired by **Energy-Aware Scheduling (EAS)** in modern operating systems:  
+  it gradually ramps up frequency and switches between big.LITTLE cores to balance performance and power.
 
-- **Generic** simulates the traditional **Performance Governor**:  
-  straightforward, performance-first, but inefficient.  
+- **ondemand** emulates the classic **ondemand governor**:  
+  it quickly and dynamically adjusts CPU frequency based on demand—when there is CPU work, it jumps to max frequency; when idle time increases, it lowers the frequency.  
 
 ---
 
-## 🚀 Run Instructions
+## 🚀 How to Run
 
-1. Make sure **Python 3** is installed  
-2. Clone or download this project  
-3. Run in terminal:  
+1. Make sure **Python 3** is installed.  
+2. Clone or download this project.  
+3. In the terminal, run:  
+
    ```bash
    python "FAS Turtle Game.py"
