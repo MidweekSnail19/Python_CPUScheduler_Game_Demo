@@ -35,7 +35,7 @@
 
 - 📊 **HUD 实时显示**  
   - KPS、总按键数  
-  - FAS 与 Generic 的频率、帧时、FPS  
+  - FAS 与 ondemand 的频率、帧时、FPS  
   - 功耗 (W)、每帧能耗 (mJ)、能效 (FPS/W)  
   - 当前运行核（小核/大核）、过载/低载计数  
 
