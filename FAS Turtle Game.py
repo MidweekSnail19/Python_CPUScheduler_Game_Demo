@@ -108,7 +108,7 @@ def FAS():
             underloadCount = max(0, underloadCount - 1)                 # 用受限步数回推
     return frame_us, nowMhz
 
-def generic_Sched():
+def ondemand_Sched():
     simulate = default_frametime + CURRENT_KPS * 200  
 
     # 选当前核的上限
@@ -182,7 +182,7 @@ def update_hud():
     refresh_kps()
     frame_us, now_mhz = FAS()
     coreAffinity()
-    frame_us_gen_raw, freq_gen = generic_Sched()
+    frame_us_gen_raw, freq_gen = ondemand_Sched()
 
     # —— 计算显示用/统计用（你原来的代码保持不变）——
     DISPLAY_CAP_US = 1000
@@ -214,7 +214,7 @@ def update_hud():
         f"KPS (近{WINDOW:.0f}s): {CURRENT_KPS:.2f}\n"
         f"FAS策略:     {now_mhz:.0f} MHz | {frame_us_fas_disp:.1f} μs | {fps_fas:.1f} FPS | "
         f"P={P_fas:.2f} | E/帧={E_fas:.3f} mJ | FPS/W={PPW_fas:.1f}\n"
-        f"Generic策略: {freq_gen:.0f} MHz | {frame_us_gen_disp:.1f} μs | {fps_gen:.1f} FPS | "
+        f"ondemand策略: {freq_gen:.0f} MHz | {frame_us_gen_disp:.1f} μs | {fps_gen:.1f} FPS | "
         f"P={P_gen:.2f} | E/帧={E_gen:.3f} mJ | FPS/W={PPW_gen:.1f}\n"
         f"CPU亲和：{'小核' if coreChoice==0 else '大核'} | 当前核上限：{core_max} MHz\n"
         f"over:{overloadCount}/{SWITCH_UP_FRAMES} | under:{underloadCount}/{SWITCH_DOWN_FRAMES}\n"
@@ -286,6 +286,7 @@ screen.onkeypress(quit_app, "Escape")
 # 启动HUD刷新
 update_hud()
 t.done()
+
 
 
 
